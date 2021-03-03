@@ -12,11 +12,13 @@ public class Movement : MonoBehaviour
     public float rotationalThrust = 1f;
 
     private Rigidbody rb;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,11 +30,21 @@ public class Movement : MonoBehaviour
 
     private void ProcessInput()
     {
-        if (Input.GetKey(KeyCode.Space)) 
+        if (Input.GetKey(KeyCode.Space))
         {
+
             rb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
         }
-        
+        else
+        {
+            audioSource.Stop();
+        }
+
     }
 
     private void ProcessRotation()
