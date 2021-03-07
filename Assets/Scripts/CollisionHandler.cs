@@ -16,6 +16,7 @@ public class CollisionHandler : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("summiii");
         audioSource = GetComponent<AudioSource>();
         movement = GetComponent<Movement>();
     }
@@ -51,7 +52,7 @@ public class CollisionHandler : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(successAudio);
         movement.engineParticles.Stop();
-        GetComponent<Movement>().enabled = false;
+        movement.enabled = false;
         Invoke(nameof(LoadNextLevel), loadDelay);
     }
 
