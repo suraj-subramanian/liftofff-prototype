@@ -297,6 +297,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1027912339 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1316516245654454275, guid: 7d7f003a1f209e04c9105a2cc7ffa81c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4847977030236425709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &69502344787167983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,11 +379,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1316516245654454275, guid: 7d7f003a1f209e04c9105a2cc7ffa81c,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316516245654454275, guid: 7d7f003a1f209e04c9105a2cc7ffa81c,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4154171199409773230, guid: 7d7f003a1f209e04c9105a2cc7ffa81c,
         type: 3}
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 4847977029661698298, guid: 7d7f003a1f209e04c9105a2cc7ffa81c,
+        type: 3}
+      propertyPath: engineParticles
+      value: 
+      objectReference: {fileID: 1027912339}
     - target: {fileID: 5189680739239906272, guid: 7d7f003a1f209e04c9105a2cc7ffa81c,
         type: 3}
       propertyPath: m_RootOrder
