@@ -4,11 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    [SerializeField]
-    public float loadDelay = 2f;
+    [SerializeField] float loadDelay = 2f;
+    [SerializeField] AudioClip crashAudio;
+    [SerializeField] AudioClip successAudio;
+
+    private AudioSource audioSource;
+    private bool isTransitioning = false;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();    
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (isTransitioning)
+        {
+            return;
+        }
+
         switch (collision.gameObject.tag) {
             case "Fuel":
                 Debug.Log("Fuel");
@@ -28,12 +42,18 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartSuccessSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(successAudio);
         GetComponent<Movement>().enabled = false;
         Invoke(nameof(LoadNextLevel), loadDelay);
     }
 
     private void StartCrashSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(crashAudio);
         GetComponent<Movement>().enabled = false;
         Invoke(nameof(ReloadLevel), loadDelay);
     }
